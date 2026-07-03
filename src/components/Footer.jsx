@@ -16,7 +16,7 @@ export default function Footer() {
             <h3>🎓 {siteInfo.name}</h3>
             <p>一个邵院学长做的网站，希望能帮到你</p>
             <p className="footer-address">📍 {siteInfo.location}</p>
-            <p>📞 {aboutContent.contact.phone}</p>
+            <p>📱 微信：{aboutContent.contact.phone}</p>
           </div>
           <div className="footer-links">
             <h4>快速导航</h4>
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>© 2026 {siteInfo.name} | 有问题直接找学长 📞 {aboutContent.contact.phone}</p>
+          <p>© 2026 {siteInfo.name} | 有问题加学长微信 📱 {aboutContent.contact.phone}</p>
         </div>
       </div>
     </footer>

@@ -144,11 +144,11 @@ export default function Home() {
             }}>
               <h2 style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: 8 }}>还有问题？直接找我聊</h2>
               <p style={{ fontSize: '1rem', opacity: 0.9, marginBottom: 24 }}>别不好意思，谁大一不是懵过来的呢 😄</p>
-              <p style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: 24 }}>📞 {homeContent.contactPhone}</p>
+              <p style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: 24 }}>📱 {homeContent.contactPhone}</p>
               <Link to="/qa" style={{
                 display: 'inline-block', padding: '14px 36px', borderRadius: 50,
                 background: '#fff', color: '#FF6B35', fontWeight: 700, fontSize: '1rem',
-              }}>💬 去留言</Link>
+              }}>💬 加微信</Link>
             </div>
           </ScrollReveal>
         </div>
