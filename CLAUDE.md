@@ -13,7 +13,7 @@
 - **推送方式**：SSH（`git@github.com:HHX111-CMD/sysc.git`）
 - **自动部署**：GitHub Actions（`.github/workflows/deploy.yml`），push 到 master 后自动触发
 - **Vite 配置**：`base: '/sysc/'`（必须匹配仓库名）
-- **路由配置**：`BrowserRouter basename="/sysc"`（必须匹配 base 路径）
+- **路由配置**：`HashRouter`（不用 basename，适配 GitHub Pages 静态托管，解决首次加载空白问题）
 
 ## 文件结构
 ```

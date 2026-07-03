@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import SearchBar from './SearchBar';
 import './Navbar.css';
 
 const navLinks = [
@@ -52,6 +53,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+        <SearchBar />
       </div>
     </nav>
   );
