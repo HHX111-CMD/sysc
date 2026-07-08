@@ -6,14 +6,21 @@ import Countdown from '../components/Countdown';
 import { homeContent, siteInfo } from '../data/content';
 import searchIndex from '../data/searchIndex';
 
-// 校园实拍图片
-const campusImages = [
+// 七里坪校区实拍
+const qilipingImages = [
   { src: '/sysc/images/campus/gate-east.jpg', caption: '东门（超越门）' },
   { src: '/sysc/images/campus/gate-north1.jpg', caption: '北一门' },
   { src: '/sysc/images/campus/gate-north2.jpg', caption: '北二门' },
   { src: '/sysc/images/campus/gate-north3.jpg', caption: '北三门' },
   { src: '/sysc/images/campus/library.jpg', caption: '图书馆' },
   { src: '/sysc/images/campus/teaching-building.jpg', caption: '教学楼' },
+];
+
+// 李子园校区实拍（图片待添加）
+const liziyuanImages = [
+  { src: '/sysc/images/campus/liziyuan-gate.jpg', caption: '李子园校门' },
+  { src: '/sysc/images/campus/liziyuan-library.jpg', caption: '李子园图书馆' },
+  { src: '/sysc/images/campus/liziyuan-office.jpg', caption: '李子园办公楼' },
 ];
 
 export default function Home() {
@@ -116,7 +123,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 校园风光 */}
       {/* 开学倒计时 */}
       <section style={{ padding: '0 24px 40px' }}>
         <div className="container" style={{ textAlign: 'center' }}>
@@ -128,14 +134,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 七里坪校区 */}
       <section style={{ padding: '0 24px 60px' }}>
         <div className="container">
           <ScrollReveal>
-            <h2 className="section-title">📷 校园实拍</h2>
-            <p className="section-subtitle">先带你云逛一圈邵院~</p>
+            <h2 className="section-title">📷 七里坪校区</h2>
+            <p className="section-subtitle">主校区，大部分同学都在这里~</p>
           </ScrollReveal>
           <ScrollReveal>
-            <ImageGallery images={campusImages} columns={3} />
+            <ImageGallery images={qilipingImages} columns={3} />
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* 李子园校区 */}
+      <section style={{ padding: '0 24px 80px' }}>
+        <div className="container">
+          <ScrollReveal>
+            <h2 className="section-title">📷 李子园校区</h2>
+            <p className="section-subtitle">老校区，文化底蕴十足~</p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <ImageGallery images={liziyuanImages} columns={3} />
           </ScrollReveal>
         </div>
       </section>
