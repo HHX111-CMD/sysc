@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 import ImageGallery from '../components/ImageGallery';
+import Countdown from '../components/Countdown';
 import { homeContent, siteInfo } from '../data/content';
 import searchIndex from '../data/searchIndex';
 
@@ -116,6 +117,17 @@ export default function Home() {
       </section>
 
       {/* 校园风光 */}
+      {/* 开学倒计时 */}
+      <section style={{ padding: '0 24px 40px' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <ScrollReveal>
+            <h2 className="section-title">⏳ 距离开学还有</h2>
+            <p className="section-subtitle" style={{ marginBottom: 24 }}>2026年9月1日，期待与你相见！</p>
+            <Countdown />
+          </ScrollReveal>
+        </div>
+      </section>
+
       <section style={{ padding: '0 24px 60px' }}>
         <div className="container">
           <ScrollReveal>
