@@ -8,12 +8,12 @@ import searchIndex from '../data/searchIndex';
 
 // 校园实拍图片
 const campusImages = [
-  { src: '/images/campus/gate-east.jpg', caption: '东门（超越门）' },
-  { src: '/images/campus/gate-north1.jpg', caption: '北一门' },
-  { src: '/images/campus/gate-north2.jpg', caption: '北二门' },
-  { src: '/images/campus/gate-north3.jpg', caption: '北三门' },
-  { src: '/images/campus/library.jpg', caption: '图书馆' },
-  { src: '/images/campus/teaching-building.jpg', caption: '教学楼' },
+  { src: '/sysc/images/campus/gate-east.jpg', caption: '东门（超越门）' },
+  { src: '/sysc/images/campus/gate-north1.jpg', caption: '北一门' },
+  { src: '/sysc/images/campus/gate-north2.jpg', caption: '北二门' },
+  { src: '/sysc/images/campus/gate-north3.jpg', caption: '北三门' },
+  { src: '/sysc/images/campus/library.jpg', caption: '图书馆' },
+  { src: '/sysc/images/campus/teaching-building.jpg', caption: '教学楼' },
 ];
 
 export default function Home() {
