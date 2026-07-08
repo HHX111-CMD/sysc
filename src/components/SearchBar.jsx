@@ -18,13 +18,33 @@ export default function SearchBar({ variant = 'nav' }) {
       setOpen(false);
       return;
     }
-    const q = query.toLowerCase();
-    const filtered = searchIndex
-      .filter(item => {
-        const text = `${item.title} ${item.keywords} ${item.snippet}`.toLowerCase();
-        return q.split(/\s+/).every(word => text.includes(word));
-      })
-      .slice(0, 8);
+    const q = query.toLowerCase().trim();
+
+    // 先尝试精确匹配（包括子串匹配）
+    let filtered = searchIndex.filter(item => {
+      const text = `${item.title} ${item.keywords} ${item.snippet}`.toLowerCase();
+      return text.includes(q);
+    });
+
+    // 如果精确匹配没结果，用中文分词：去掉停用词后 any 匹配
+    if (filtered.length === 0) {
+      const stopWords = /[的吗呢啊吧有是么怎么什么哪了个这那在就也都还和与或可以能会要应该去不]/g;
+      const tokens = q.replace(stopWords, ' ').split(/\s+/).filter(t => t.length > 0);
+      if (tokens.length > 0) {
+        filtered = searchIndex.filter(item => {
+          const text = `${item.title} ${item.keywords} ${item.snippet}`.toLowerCase();
+          return tokens.some(token => text.includes(token));
+        });
+      } else {
+        // 全是停用词时退化为单字符搜索
+        filtered = searchIndex.filter(item => {
+          const text = `${item.title} ${item.keywords} ${item.snippet}`.toLowerCase();
+          return [...q].some(ch => text.includes(ch));
+        });
+      }
+    }
+
+    filtered = filtered.slice(0, 8);
     setResults(filtered);
     setOpen(filtered.length > 0);
     setSelected(-1);
