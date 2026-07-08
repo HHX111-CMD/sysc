@@ -1,7 +1,7 @@
 import ScrollReveal from '../components/ScrollReveal';
 import { prepareContent } from '../data/content';
 
-const { checklist, dontBring, weather, military, transport, process } = prepareContent;
+const { checklist, dontBring, military, transport, process } = prepareContent;
 
 export default function Prepare() {
   return (
@@ -38,14 +38,6 @@ export default function Prepare() {
               {dontBring.items.map((item, i) => (
                 <p key={i} style={{ fontSize: '0.95rem', color: '#636E72', padding: '6px 0' }}>✕ {item}</p>
               ))}
-            </div>
-          </ScrollReveal>
-
-          {/* 天气 */}
-          <ScrollReveal>
-            <div style={cardStyle}>
-              <h2 style={h2Style}>{weather.title}</h2>
-              <p style={pStyle}>{weather.content}</p>
             </div>
           </ScrollReveal>
 
