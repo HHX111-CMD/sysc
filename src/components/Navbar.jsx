@@ -11,6 +11,7 @@ const navLinks = [
   { path: '/majors', label: '专业解读' },
   { path: '/qa', label: '百问百答' },
   { path: '/about', label: '关于' },
+  { path: 'https://fcdh.hnsyu.edu.cn/campus-map-web/index?login=cas&loginSys=index', label: '🗺️ 校园地图', external: true },
 ];
 
 export default function Navbar() {
@@ -43,12 +44,18 @@ export default function Navbar() {
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {navLinks.map(link => (
             <li key={link.path}>
-              <Link
-                to={link.path}
-                className={location.pathname === link.path ? 'active' : ''}
-              >
-                {link.label}
-              </Link>
+              {link.external ? (
+                <a href={link.path} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  to={link.path}
+                  className={location.pathname === link.path ? 'active' : ''}
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
