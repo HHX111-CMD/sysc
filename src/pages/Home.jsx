@@ -12,8 +12,8 @@ const campusImages = [
   { src: '/images/campus/%E5%8C%97%E4%B8%80%E9%97%A8.png', caption: '北一门' },
   { src: '/images/campus/%E5%8C%97%E4%BA%8C%E9%97%A8.png', caption: '北二门' },
   { src: '/images/campus/%E5%8C%97%E4%B8%89%E9%97%A8.png', caption: '北三门' },
-  { src: '/images/campus/playground.svg', caption: '图书馆' },
-  { src: '/images/campus/campus-road.svg', caption: '教学楼' },
+  { src: '/images/campus/%E5%9B%BE%E4%B9%A6%E9%A6%86.png', caption: '图书馆' },
+  { src: '/images/campus/%E6%95%99%E5%AD%A6%E6%A5%BC.png', caption: '教学楼' },
 ];
 
 export default function Home() {
