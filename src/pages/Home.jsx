@@ -1,8 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
+import ImageGallery from '../components/ImageGallery';
 import { homeContent, siteInfo } from '../data/content';
 import searchIndex from '../data/searchIndex';
+
+// 校园风光图片 - 替换为真实照片：把图片放到 public/images/ 目录下
+const campusImages = [
+  { src: '/images/campus/gate.svg', caption: '邵阳学院校门' },
+  { src: '/images/campus/library.svg', caption: '图书馆 · 学习圣地' },
+  { src: '/images/campus/teaching-building.svg', caption: '教学楼' },
+  { src: '/images/campus/overview.svg', caption: '校园全景' },
+  { src: '/images/campus/playground.svg', caption: '田径场' },
+  { src: '/images/campus/campus-road.svg', caption: '校园林荫道' },
+];
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -100,6 +111,19 @@ export default function Home() {
                 >{h.q}</Link>
               ))}
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* 校园风光 */}
+      <section style={{ padding: '0 24px 60px' }}>
+        <div className="container">
+          <ScrollReveal>
+            <h2 className="section-title">📷 校园风光</h2>
+            <p className="section-subtitle">先带你云逛一圈邵院~</p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <ImageGallery images={campusImages} columns={3} />
           </ScrollReveal>
         </div>
       </section>

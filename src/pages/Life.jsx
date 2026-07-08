@@ -1,10 +1,23 @@
 import ScrollReveal from '../components/ScrollReveal';
+import ImageGallery from '../components/ImageGallery';
 import { lifeContent } from '../data/content';
 
 const { dorm, canteen, money, parttime, clubs } = lifeContent;
 
+// 宿舍图片 - 替换为真实照片：把图片放到 public/images/dorm/ 目录下
+const dormImages = [
+  { src: '/images/dorm/4-bed.svg', caption: '四人间 · 上床下桌 · 独立卫浴' },
+  { src: '/images/dorm/6-bed.svg', caption: '六人间 · 空间宽敞' },
+  { src: '/images/dorm/building.svg', caption: '宿舍楼外观' },
+];
+
+// 食堂图片 - 替换为真实照片：把图片放到 public/images/canteen/ 目录下
+const canteenImages = [
+  { src: '/images/canteen/canteen1.svg', caption: '食堂内景 · 干净明亮' },
+  { src: '/images/canteen/canteen2.svg', caption: '丰富多样的菜品' },
+];
+
 export default function Life() {
-  const dormColors = ['#2ECC71', '#1A73E8', '#FFB347'];
   return (
     <>
       <div className="page-header">
@@ -32,6 +45,9 @@ export default function Life() {
               {dorm.tips.map((t, i) => (
                 <p key={i} style={{ fontSize: '0.9rem', color: '#636E72', padding: '4px 0' }}>💡 {t}</p>
               ))}
+              <div style={{ marginTop: 20 }}>
+                <ImageGallery images={dormImages} columns={2} title="📸 宿舍实拍" />
+              </div>
             </div>
           </ScrollReveal>
 
@@ -47,6 +63,9 @@ export default function Life() {
                 </div>
               ))}
               <p style={{ fontSize: '0.9rem', color: '#636E72', marginTop: 12 }}>💡 {canteen.tips}</p>
+              <div style={{ marginTop: 20 }}>
+                <ImageGallery images={canteenImages} columns={2} title="📸 食堂实拍" />
+              </div>
             </div>
           </ScrollReveal>
 

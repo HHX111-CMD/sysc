@@ -180,6 +180,21 @@ img { max-width: 100%; display: block; }
   position: relative;
 }
 
+/* ========== Image Gallery Overrides ========== */
+/* 移动端图片画廊自适应单列 */
+@media (max-width: 640px) {
+  .gallery-grid-2,
+  .gallery-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ========== Lightbox Animation ========== */
+@keyframes lightboxIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
   .section { padding: 48px 0; }
