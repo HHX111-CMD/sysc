@@ -6,14 +6,14 @@ import Countdown from '../components/Countdown';
 import { homeContent, siteInfo } from '../data/content';
 import searchIndex from '../data/searchIndex';
 
-// 校园实拍图片 - 替换为真实照片：把图片放到 public/images/campus/ 目录下
+// 校园实拍图片
 const campusImages = [
-  { src: '/images/campus/%E4%B8%9C%E9%97%A8%EF%BC%88%E8%B6%85%E8%B6%8A%E9%97%A8).png', caption: '东门（超越门）' },
-  { src: '/images/campus/%E5%8C%97%E4%B8%80%E9%97%A8.png', caption: '北一门' },
-  { src: '/images/campus/%E5%8C%97%E4%BA%8C%E9%97%A8.png', caption: '北二门' },
-  { src: '/images/campus/%E5%8C%97%E4%B8%89%E9%97%A8.png', caption: '北三门' },
-  { src: '/images/campus/%E5%9B%BE%E4%B9%A6%E9%A6%86.png', caption: '图书馆' },
-  { src: '/images/campus/%E6%95%99%E5%AD%A6%E6%A5%BC.png', caption: '教学楼' },
+  { src: '/images/campus/%E4%B8%9C%E9%97%A8%EF%BC%88%E8%B6%85%E8%B6%8A%E9%97%A8).jpg', caption: '东门（超越门）' },
+  { src: '/images/campus/%E5%8C%97%E4%B8%80%E9%97%A8.jpg', caption: '北一门' },
+  { src: '/images/campus/%E5%8C%97%E4%BA%8C%E9%97%A8.jpg', caption: '北二门' },
+  { src: '/images/campus/%E5%8C%97%E4%B8%89%E9%97%A8.jpg', caption: '北三门' },
+  { src: '/images/campus/%E5%9B%BE%E4%B9%A6%E9%A6%86.jpg', caption: '图书馆' },
+  { src: '/images/campus/%E6%95%99%E5%AD%A6%E6%A5%BC.jpg', caption: '教学楼' },
 ];
 
 export default function Home() {
