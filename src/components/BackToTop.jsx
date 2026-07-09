@@ -13,6 +13,7 @@ export default function BackToTop() {
 
   return (
     <button
+      className="back-to-top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       style={{
         position: 'fixed', bottom: 32, right: 32, zIndex: 999,
@@ -23,8 +24,6 @@ export default function BackToTop() {
         animation: 'fadeInScale 0.3s ease',
         transition: 'transform 0.2s',
       }}
-      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
-      onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
       aria-label="回到顶部"
     >
       ↑

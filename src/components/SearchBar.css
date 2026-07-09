@@ -101,6 +101,25 @@
   color: var(--text-muted);
   font-size: 0.9rem;
 }
+.search-no-result-cta {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: var(--gradient-warm);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+@media (hover: hover) {
+  .search-no-result-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(255,107,53,0.35);
+  }
+}
+.search-no-result-cta:active { transform: scale(0.96); }
 
 /* 移动端适配 */
 @media (max-width: 960px) {

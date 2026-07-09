@@ -1,9 +1,69 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ScrollReveal from '../components/ScrollReveal';
 import { qaContent, aboutContent } from '../data/content';
 
+// 单个 FAQ 项：用 max-height + ref 实现平滑展开/收起
+function FaqItem({ item, isOpen, onToggle }) {
+  const bodyRef = useRef(null);
+
+  return (
+    <div style={{
+      background: '#fff', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+      overflow: 'hidden', border: isOpen ? '1px solid #FF6B35' : '1px solid transparent',
+      transition: 'border 0.3s',
+    }}>
+      <button
+        className="faq-question"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
+          padding: '18px 24px', border: 'none', background: 'none', cursor: 'pointer',
+          fontSize: '1rem', fontWeight: 600, textAlign: 'left', gap: 12,
+        }}
+      >
+        <span style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+          <span style={{ color: '#FF6B35', fontSize: '1.1rem', flexShrink: 0, marginTop: 1 }}>Q</span>
+          {item.q}
+        </span>
+        <span style={{ color: '#A0AEC0', transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }}>▼</span>
+      </button>
+      <div style={{
+        maxHeight: isOpen ? (bodyRef.current?.scrollHeight || 600) : 0,
+        overflow: 'hidden',
+        transition: 'max-height 0.35s ease',
+      }}>
+        <div ref={bodyRef} style={{
+          padding: '0 24px 20px 48px', fontSize: '0.94rem', color: '#636E72', lineHeight: 1.9,
+        }}>
+          <span style={{ color: '#1A73E8', fontWeight: 700 }}>A </span>
+          {item.a}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function QA() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const phone = aboutContent.contact.phone;
+
+  const copyPhone = async () => {
+    try {
+      await navigator.clipboard.writeText(phone);
+    } catch {
+      // 降级：老浏览器用 execCommand
+      const el = document.createElement('textarea');
+      el.value = phone;
+      document.body.appendChild(el);
+      el.select();
+      try { document.execCommand('copy'); } catch { /* 忽略 */ }
+      document.body.removeChild(el);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <>
@@ -24,35 +84,11 @@ export default function QA() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 64 }}>
             {qaContent.questions.map((item, i) => (
               <ScrollReveal key={i}>
-                <div style={{
-                  background: '#fff', borderRadius: 14, boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                  overflow: 'hidden', border: openIndex === i ? '1px solid #FF6B35' : '1px solid transparent',
-                  transition: 'border 0.3s',
-                }}>
-                  <button
-                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    style={{
-                      width: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
-                      padding: '18px 24px', border: 'none', background: 'none', cursor: 'pointer',
-                      fontSize: '1rem', fontWeight: 600, textAlign: 'left', gap: 12,
-                    }}
-                  >
-                    <span style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                      <span style={{ color: '#FF6B35', fontSize: '1.1rem', flexShrink: 0, marginTop: 1 }}>Q</span>
-                      {item.q}
-                    </span>
-                    <span style={{ color: '#A0AEC0', transform: openIndex === i ? 'rotate(180deg)' : 'none', transition: '0.3s', flexShrink: 0 }}>▼</span>
-                  </button>
-                  {openIndex === i && (
-                    <div style={{
-                      padding: '0 24px 20px 48px', fontSize: '0.94rem', color: '#636E72',
-                      lineHeight: 1.9, animation: 'fadeInUp 0.3s ease',
-                    }}>
-                      <span style={{ color: '#1A73E8', fontWeight: 700 }}>A </span>
-                      {item.a}
-                    </div>
-                  )}
-                </div>
+                <FaqItem
+                  item={item}
+                  isOpen={openIndex === i}
+                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                />
               </ScrollReveal>
             ))}
           </div>
@@ -69,13 +105,20 @@ export default function QA() {
                 没找到答案？加学长微信，有问题直接问<br />
                 平时也会在朋友圈分享校园干货~
               </p>
-              <div style={{
-                display: 'inline-block', background: 'linear-gradient(135deg, #FF6B35, #FF416C)',
-                borderRadius: 16, padding: '20px 36px', color: '#fff',
-              }}>
-                <p style={{ fontSize: '0.9rem', opacity: 0.85, marginBottom: 6 }}>📱 学长微信</p>
-                <p style={{ fontSize: '1.6rem', fontWeight: 900, letterSpacing: 1 }}>{aboutContent.contact.phone}</p>
-              </div>
+              <button
+                className="wechat-copy"
+                onClick={copyPhone}
+                style={{
+                  display: 'inline-block', background: 'linear-gradient(135deg, #FF6B35, #FF416C)',
+                  borderRadius: 16, padding: '20px 36px', color: '#fff', border: 'none',
+                  cursor: 'pointer', fontFamily: 'inherit',
+                }}
+              >
+                <p style={{ fontSize: '0.9rem', opacity: 0.85, marginBottom: 6 }}>
+                  📱 学长微信 {copied ? '（已复制✓）' : '（点击复制）'}
+                </p>
+                <p style={{ fontSize: '1.6rem', fontWeight: 900, letterSpacing: 1 }}>{phone}</p>
+              </button>
               <p style={{ color: '#A0AEC0', fontSize: '0.85rem', marginTop: 16 }}>
                 添加时备注"新生"，学长通过更快哦
               </p>

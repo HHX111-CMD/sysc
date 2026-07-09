@@ -46,7 +46,7 @@ export default function SearchBar({ variant = 'nav' }) {
 
     filtered = filtered.slice(0, 8);
     setResults(filtered);
-    setOpen(filtered.length > 0);
+    setOpen(true); // 有查询就展开：有结果显示结果，无结果显示引导
     setSelected(-1);
   }, [query]);
 
@@ -122,17 +122,29 @@ export default function SearchBar({ variant = 'nav' }) {
           position: 'absolute', top: '100%', left: 0, right: 0, transform: 'none',
           marginTop: 8, width: '100%', maxWidth: 'none',
         } : {}}>
-          {results.map((item, i) => (
-            <div
-              key={i}
-              className={`search-result-item ${i === selected ? 'selected' : ''}`}
-              onClick={() => goTo(item)}
-              onMouseEnter={() => setSelected(i)}
-            >
-              <div className="result-title">{item.title}</div>
-              <div className="result-snippet">{item.snippet}</div>
+          {results.length > 0 ? (
+            results.map((item, i) => (
+              <div
+                key={i}
+                className={`search-result-item ${i === selected ? 'selected' : ''}`}
+                onClick={() => goTo(item)}
+                onMouseEnter={() => setSelected(i)}
+              >
+                <div className="result-title">{item.title}</div>
+                <div className="result-snippet">{item.snippet}</div>
+              </div>
+            ))
+          ) : (
+            <div className="search-no-result">
+              没找到「{query}」相关内容 😅
+              <div
+                className="search-no-result-cta"
+                onClick={() => goTo({ path: '/qa' })}
+              >
+                💬 加学长微信直接问 →
+              </div>
             </div>
-          ))}
+          )}
         </div>
       )}
     </div>

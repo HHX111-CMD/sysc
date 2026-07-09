@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import Prepare from './pages/Prepare';
 import Life from './pages/Life';
@@ -14,6 +15,7 @@ import NotFound from './pages/NotFound';
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <main style={{ minHeight: '100vh' }}>
         <Routes>

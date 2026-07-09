@@ -246,3 +246,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .btn-outline:hover { background: transparent; color: var(--secondary); transform: none; }
 }
 .btn:active { transform: scale(0.96); }
+
+/* ========== FAQ 手风琴 / 微信复制按钮 ========== */
+@media (hover: hover) {
+  .faq-question:hover { background: rgba(255,107,53,0.04); }
+}
+.faq-question:active { background: rgba(255,107,53,0.08); }
+
+.wechat-copy {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+@media (hover: hover) {
+  .wechat-copy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.35);
+  }
+}
+.wechat-copy:active { transform: scale(0.97); }
+
+/* ========== 回到顶部按钮 ========== */
+@media (hover: hover) {
+  .back-to-top:hover { transform: scale(1.1); }
+}
+.back-to-top:active { transform: scale(0.95); }
+/* 移动端下移一点，避开底部安全区/微信工具条 */
+@media (max-width: 768px) {
+  .back-to-top { bottom: 20px !important; right: 20px !important; }
+}
